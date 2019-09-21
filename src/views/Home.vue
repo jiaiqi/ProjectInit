@@ -29,7 +29,7 @@
       <div class="pie1_box">
         <div class="liquid_title"></div>
         <!-- <ve-liquidfill :data="liquid_Data" :settings="liquid_settings"></ve-liquidfill> -->
-        <ve-pie :data="pieData" :settings="pieSettings" :legend-visible="false"></ve-pie>
+        <ve-pie :data="pieData" :settings="pieSettings" :legend="pieSettings.legend"></ve-pie>
       </div>
       <div class="box3">
         <dv-capsule-chart :config="box3config" style="width:300px;height:200px" />
@@ -51,7 +51,15 @@
         <!-- <dv-flyline-chart :config="box7config" style="width:100%;height:100%;" /> -->
       </div>
       <div class="box8">
-        <ve-histogram :data="box8Data" :extend="box8Settings" :colors="colors" :settings="box8se"></ve-histogram>
+        <ve-histogram
+          :data="box8Data"
+          :grid="box8grid"
+          :legend="box8se.legend"
+          :textStyle="box8se.textStyle"
+          :colors="colors"
+          :settings="box8se"
+          :yAxis="yAxis"
+        ></ve-histogram>
       </div>
       <div class="box9">
         <ve-map :data="box9Data" :settings="box9Settings" :extend="box9Extend" height="600px"></ve-map>
@@ -131,12 +139,17 @@ export default {
         ]
       },
       pieSettings: {
-        radius: 60,
+        radius: 80,
         offsetY: 120,
         level: [
           ['1/1', '1/2', '1/3'],
           ['1/4', '1/5']
         ],
+        legend: {
+          textStyle: {
+            color: "#fff"
+          }
+        },
         textStyle: {
           color: "#fff"
         }
@@ -297,17 +310,28 @@ export default {
         bgImgUrl: '../assets/images/map.jpg',
       },
       box8Data: {
-        columns: ['日期', '访问用户', '下单用户', '下单率'],
+        columns: ['日期', '访问用户', '下单用户'],
         rows: [
-          { '日期': '1/1', '访问用户': 1393, '下单用户': 1093, '下单率': 0.32 },
-          { '日期': '1/2', '访问用户': 3530, '下单用户': 3230, '下单率': 0.26 },
-          { '日期': '1/3', '访问用户': 2923, '下单用户': 2623, '下单率': 0.76 },
-          { '日期': '1/4', '访问用户': 1723, '下单用户': 1423, '下单率': 0.49 },
-          { '日期': '1/5', '访问用户': 3792, '下单用户': 3492, '下单率': 0.323 },
-          { '日期': '1/6', '访问用户': 4593, '下单用户': 4293, '下单率': 0.78 }
+          { '日期': '1/1', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/2', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/3', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/4', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/5', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/6', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/7', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/8', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/9', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/10', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/11', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/12', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/13', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/14', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/15', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/16', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 },
+          { '日期': '1/17', '访问用户': Math.random() * 1000 + 300, '下单用户': Math.random() * 1000 + 100 }
         ]
       },
-      box8Settings: {
+      box8Extend: {
         legend: {
           show: false
         },
@@ -319,8 +343,38 @@ export default {
           label: { show: true, position: "top" }
         },
       },
+      box8grid: {
+        show: false,
+        top: 50,
+        left: 10,
+        backgroundColor: 'transparent',
+      },
+      yAxis: {
+        axisLine: {
+          show: false,
+          lineStyle: {
+            color: "#000"
+          }
+        }
+      },
       box8se: {
-        showLine: ['下单用户']
+        yAxis: {
+          axisLine: {
+            show: false,
+            lineStyle: {
+              color: "#000"
+            }
+          }
+        },
+        legend: {
+          textStyle: {
+            color: "#fff"
+          },
+        },
+        showLine: ['下单用户'],
+        textStyle: {
+          color: "#fff"
+        },
       },
       box9Settings: {
         position: 'china',
@@ -361,10 +415,7 @@ export default {
           }
         }
       },
-      colors: ['#c23531', '#2f4554', '#61a0a8',
-        '#d48265', '#91c7ae', '#749f83',
-        '#ca8622', '#bda29a', '#6e7074',
-        '#546570', '#c4ccd3']
+      colors: ['#42A5F5', '#FFFF00', '#c62828', '#32c5e9', '#96bfff'],
     }
   },
 }
@@ -446,9 +497,9 @@ export default {
     .box5 {
       position: absolute;
       top: 320px;
-      left: 600px;
-      width: 500px;
-      height: 300px;
+      left: 700px;
+      width: 400px;
+      height: 400px;
     }
     .box6 {
       position: absolute;
