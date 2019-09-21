@@ -5,13 +5,16 @@ import store from './store'
 import axios from 'axios';
 import VueInit from '@/assets/dev_config/vue_init';
 import VueUtil from '@/assets/dev_config/vue_util';
+import vcharts from 'v-charts'
+import dataV from '@jiaminghi/data-view'
 
 
 Vue.config.productionTip = false
 
 VueInit();
 VueUtil();
-
+Vue.use(vcharts)
+Vue.use(dataV)
 Vue.prototype.axios = axios; // 挂载axios到vue.proto对象上原型属性
 
 axios.interceptors.request.use(config => {
