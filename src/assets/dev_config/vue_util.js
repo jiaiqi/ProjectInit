@@ -1,16 +1,6 @@
 /* eslint-disable */
 import moment from "moment";
 moment.locale("zh-CN")
-// import Dialog from '../common/dialog.vue'
-// import * as DataUtil from "../../util/DataUtil";
-// import {
-//   formatMoney,
-//   monthEnd,
-//   monthStart,
-//   traverseObj,
-//   weekEnd,
-//   weekStart
-// } from "../../util/DataUtil";
 import Vue from "vue";
 import _ from "lodash";
 
@@ -27,8 +17,6 @@ function init_util() {
     "start-proc_v2": "/vpages/index.html#/v2/startproc",
     "editgrid": "/vpages/index.html#/editgrid",
   }
-
-
 
   Vue.prototype.emitEvent = function (eventType, data) {
     let eventKey = eventType + "#" + this.getNodePath();
@@ -109,9 +97,7 @@ function init_util() {
     }else{
       return backendIpAddr + "/" + app + "/" +  (operate_type !== '' ?operate_type + '/':'') + service;
     }
-    
   }
-
 
   /**
    *
@@ -200,19 +186,6 @@ function init_util() {
     };
 
     window.location.href = url + "?bx_auth_ticket=" + bx_auth_ticket;
-
-    // this.$http.post(url, null, { headers: params_header, 'Content-Type': 'Multipart/form-data' }).then(function (res) {
-    //   // this.cancelAddProject()
-    //   // this.allRefresh()
-    // }, function (res) {
-    //   // if (res && res.body && res.body.message.indexOf('is exists')) {
-    //   //     this.addProjectError.projectNumber = '代号不合法'
-    //   // }
-    //   //     // todo:AJAXError
-    //   //   this.processing = false
-    // })
-
-
   }
 
 
@@ -281,31 +254,6 @@ function init_util() {
     url = url + "?colsel_v2=" + service_name;
     return this.$http.post(url, data).then(response => {
       //region mock data
-
-      try {
-        // if (service_name === 'srvsso_user_add') {
-        //   response.body.data.validators = [{
-        //     in_table_validate: "function(data, vm) {\n" +
-        //       "            if (!data.email || !data.real_name) {\n" +
-        //       "              return true\n" +
-        //       "            }\n" +
-        //       "            if (!data.email.startsWith(data.real_name) ) {\n" +
-        //       "              return {\n" +
-        //       "                \"message\": \"邮箱要以姓名开头\",\n" +
-        //       "                \"cols\": [\"email\", \"real_name\"]\n" +
-        //       "              };\n" +
-        //       "            }else{\n" +
-        //       "              return true\n" +
-        //       "            }\n" +
-        //       "          }"
-        //   }]
-        // }
-      } catch (e) {
-      }
-
-
-      //endregion
-
       return response;
     })
   };
@@ -1068,7 +1016,7 @@ function init_util() {
       }else{
         return "数据不规范,无法转化成标准时间"
       }
-      return date      
+      return date
     }
   }
 }

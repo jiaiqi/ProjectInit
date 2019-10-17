@@ -5,8 +5,6 @@ import store from './store'
 import axios from 'axios';
 import VueInit from '@/assets/dev_config/vue_init';
 import VueUtil from '@/assets/dev_config/vue_util';
-import vcharts from 'v-charts'
-import dataV from '@jiaminghi/data-view'
 
 
 Vue.config.productionTip = false
