@@ -3,7 +3,8 @@
     <div class="index_table">
       <div class="table_header">
         <div class="header_left">
-          <img src="../assets/images/star-white.png" class="star-icon" />通知公告
+          <img src="../assets/images/star-white.png" class="star-icon" />
+          <span class="words">通知公告</span>
         </div>
         <div class="header_right addList" @click="addList">
           <div class="addIcon">+</div>新增
@@ -59,10 +60,19 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 1rem;
+      padding: 0 0.5rem;
       color: #fff;
       .header_left {
+        height: 100%;
+        display: flex;
+        align-items: center;
         .star-icon {
+          width: 1.5rem;
+          height: 1.5rem;
+          padding-right: 0.5rem;
+        }
+        .words {
+          // line-height: 30px;
         }
       }
       .header_right {
