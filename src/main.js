@@ -3,16 +3,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
 import VueInit from '@/assets/dev_config/vue_init';
 import VueUtil from '@/assets/dev_config/vue_util';
 
-
 Vue.config.productionTip = false
 
+Vue.use(ElementUI)
 VueInit();
 VueUtil();
-Vue.use(vcharts)
-Vue.use(dataV)
 Vue.prototype.axios = axios; // 挂载axios到vue.proto对象上原型属性
 
 axios.interceptors.request.use(config => {
